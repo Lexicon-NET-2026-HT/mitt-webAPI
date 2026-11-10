@@ -15,7 +15,9 @@ namespace WebAPIDemo
 
             // Tillhör .NETs inbyggda OpenAPI-stöd. Om man vill använda
             // SwaggerUI så kan man använda Swashbuckle istället.
-            // builder.Services.AddOpenApi();
+
+            // Måste vara med för Scalar
+            builder.Services.AddOpenApi();
 
             // Om man vill använda Swashbuckle istället för .NETs inbyggda OpenAPI-stöd
             builder.Services.AddEndpointsApiExplorer();
@@ -28,10 +30,11 @@ namespace WebAPIDemo
             if (app.Environment.IsDevelopment())
             {
                 // Hör till .NET:s inbyggda dokumentgenerering.
-                //app.MapOpenApi();
+                // Måste vara med för Scalar
+                app.MapOpenApi();
 
-                //app.UseSwagger();
-                //app.UseSwaggerUI();
+                app.UseSwagger();
+                app.UseSwaggerUI();
                 app.MapScalarApiReference();
             }
 
